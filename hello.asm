@@ -6,12 +6,12 @@ section .text
     global _start
 
 _start:
-    mov rax, 1
-    mov rdi, 1
-    mov rsi, msg
-    mov rdx, len
+    mov eax, 1
+    mov edi, 1
+    mov esi, msg
+    mov edx, len
     syscall
 
-    mov rax, 60
-    mov rdi, 0
+    mov eax, 60
+    xor edi, edi
     syscall
