@@ -19,8 +19,9 @@ pipeline stalls.
 ## ⚙️ Installation
 
 ```bash
-git clone -b optimized https://github.com/FelineFantasy/ideal-hello-world.git
-cd ideal-hello-world/optimized
+git clone https://github.com/FelineFantasy/ideal-hello-world.git
+cd ideal-hello-world
+git checkout speed
 ```
 
 ## 🎮 Build & Run
