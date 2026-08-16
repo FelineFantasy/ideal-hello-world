@@ -3,13 +3,13 @@ global _start
 section .text
 _start:
     mov rax, 1
-    mov rdi, rax
+    mov rdi, 1
     mov rsi, msg
     mov rdx, 14
     syscall
 
     mov rax, 60
-    xor rdi, rdi
+    mov rdi, 0
     syscall
 
 section .data
