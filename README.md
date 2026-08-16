@@ -1,50 +1,27 @@
-<<<<<<< HEAD
-# ideal-hello-world (main)
-=======
-# ideal-hello-world (size)
->>>>>>> size
+# ideal-hello-world (speed)
 
 [![NASM Version](https://img.shields.io/badge/NASM-2.15+-blue.svg)](https://nasm.us/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-<<<<<<< HEAD
-Classic Hello World in NASM x86-64. Simple, readable, and honest.
+Hello World optimized for execution speed. Fast as a cat's reflex.
 
 ## 📝 Description
 
-The **main** branch contains a clean implementation of "Hello World" using `syscall`. Every instruction is
-commented, making it perfect for learning x86-64 assembly.
+The **speed** branch focuses on performance. Every instruction is arranged to minimize CPU cycles and avoid
+pipeline stalls.
 
 ### Features:
-- Uses `syscall` (Linux x86-64)
-- Readable with comments
-- 16 bytes of code
-- No external dependencies
-=======
-The smallest Hello World possible in NASM without cheating.
-
-## 📝 Description
-
-The **minimal** branch is an exercise in size optimization. The binary is just **12 bytes** — no ELF header, no
-linker, just raw x86 code.
-
-### Features:
-- Only 12 bytes of machine code
-- Flat binary (no ELF)
-- Uses `int 0x80` (saves 5 bytes)
-- Inline string data
->>>>>>> size
+- 87 cycles on average (Intel i7)
+- Aligned instructions (cache-friendly)
+- Uses `movabs` for 64-bit immediates
+- No unnecessary jumps
 
 ## ⚙️ Installation
 
 ```bash
-<<<<<<< HEAD
-git clone -b main https://github.com/FelineFantasy/ideal-hello-world.git
-cd ideal-hello-world/main
-=======
-git clone -b size https://github.com/FelineFantasy/ideal-hello-world.git
+git clone https://github.com/FelineFantasy/ideal-hello-world.git
 cd ideal-hello-world
->>>>>>> size
+git checkout speed
 ```
 
 ## 🎮 Build & Run
@@ -53,12 +30,6 @@ cd ideal-hello-world
 nasm -f elf64 hello.asm -o hello.o
 ld -s hello.o -o hello
 ./hello
-```
-
-## 📊 Output
-
-```
-Hello, world!
 ```
 
 ## 👤 Author

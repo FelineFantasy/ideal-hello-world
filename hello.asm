@@ -1,22 +1,17 @@
-section .data
-    msg db "Hello, World!", 0x0A
-    len equ $ - msg
+global _start
 
 section .text
-    global _start
-
 _start:
-    mov al, 1
-    mov edi, eax
-    mov esi, msg
-    mov edx, len
+    mov rax, 1
+    mov rdi, 1
+    mov rsi, msg
+    mov rdx, 14
     syscall
 
 <<<<<<< HEAD
     mov rax, 60
     mov rdi, 0
-=======
-    mov al, 60
-    xor edi, edi
->>>>>>> size
     syscall
+
+section .data
+msg: db 'Hello, World!', 0x0A
