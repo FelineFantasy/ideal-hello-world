@@ -19,9 +19,8 @@ linker, just raw x86 code.
 ## ⚙️ Installation
 
 ```bash
-git clone -b minimal https://github.com/FelineFantasy/ideal-hello-world.git
+git clone -b size https://github.com/FelineFantasy/ideal-hello-world.git
 cd ideal-hello-world
-git checkout size
 ```
 
 ## 🎮 Build & Run
