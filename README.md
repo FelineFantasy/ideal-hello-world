@@ -32,6 +32,12 @@ ld -s hello.o -o hello
 ./hello
 ```
 
+### 📋 Output
+
+```text
+Hello, World!
+```
+
 ## 👤 Author
 
 - **FelineFantasy**
