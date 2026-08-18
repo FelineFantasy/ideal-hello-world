@@ -19,7 +19,7 @@ pipeline stalls.
 ## ⚙️ Installation
 
 ```bash
-git clone -b speed https://github.com/FelineFantasy/ideal-hello-world.git
+git clone -b speed https://github.com/FelineFantasy/ideal-hello-world
 cd ideal-hello-world
 ```
 
