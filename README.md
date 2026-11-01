@@ -6,9 +6,9 @@ The ultimate **Hello, World!** reference for x86-64 Assembly on Linux. This proj
 
 | Variant | Source File | Description | Target Size | Toolchain |
 | :--- | :--- | :--- | :--- | :--- |
-| **Standard** | `src/standard.asm` | Clean, readable code compliant with Linux ABI. | ~800-900 bytes | NASM + LD |
-| **Fast** | `src/fast.asm` | Optimized for CPU cycles, RIP-relative, and L1i cache layout. | ~700 bytes | NASM + LD |
-| **Small** | `src/small.asm` | Extreme ELF-hacking. Code injected straight into headers. | **~120-150 bytes** | FASM |
+| **Standard** | `src/standard.asm` | Clean, readable code compliant with Linux ABI. | ~460 bytes | NASM + LD |
+| **Fast** | `src/fast.asm` | Optimized for CPU cycles, RIP-relative, and L1i cache layout. | ~380 bytes | NASM + LD |
+| **Small** | `src/small.asm` | Extreme ELF-hacking. Handcrafted ELF64 header, no linker. | **~165 bytes** | NASM (flat binary) |
 
 ---
 
@@ -19,8 +19,9 @@ ideal-hello-world/
 ├── src/
 │   ├── standard.asm   # Canonical variant (.data and .text separation)
 │   ├── fast.asm       # Performance-focused (minimized opcodes, text-inlined data)
-│   └── small.asm      # Micro-variant (handcrafted ELF64 header injection)
+│   └── small.asm      # Micro-variant (handcrafted ELF64 header)
 ├── Makefile           # Multi-target build automation
+├── .gitignore         # Keeps build artifacts out of git
 └── README.md          # Project documentation
 ```
 
@@ -29,9 +30,9 @@ ideal-hello-world/
 ## 🛠️ Build & Run
 
 ### 1. Prerequisites
-To compile all variants, you need both `nasm` and `fasm`. Install them on Ubuntu/Debian via:
+To compile all variants, you only need `nasm` and a linker. Install them on Ubuntu/Debian via:
 ```bash
-sudo apt update && sudo apt install -y nasm fasm build-essential
+sudo apt update && sudo apt install -y nasm build-essential
 ```
 
 ### 2. Compilation
@@ -61,4 +62,4 @@ Unlike a standard C implementation using `printf` (which pulls in kilobytes of h
 * `sys_write` (ID `1`) — transmits the string to standard output (`stdout`).
 * `sys_exit` (ID `60`) — terminates the process safely with an exit code of `0`.
 
-Each variant optimizes this sequence: `standard` keeps the boundaries clean, `fast` drops unnecessary CPU cycles on long opcodes, and `small` folds the machine instructions directly inside the unused bytes of the executable header structures.
+Each variant optimizes this sequence: `standard` keeps the boundaries clean, `fast` drops unnecessary CPU cycles on long opcodes, and `small` ships a handcrafted ELF64 header followed by the raw syscall code, so no linker ever touches the file.
