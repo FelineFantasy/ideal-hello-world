@@ -1,0 +1,37 @@
+name: 🐱 Build variants
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'src/**/*.asm'
+      - 'Makefile'
+      - '.github/workflows/build.yml'
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Install NASM
+      run: |
+        sudo apt update
+        sudo apt install -y nasm
+
+    - name: Build all variants
+      run: make
+
+    - name: Run binaries
+      run: |
+        ./build/hello_standard
+        ./build/hello_fast
+        ./build/hello_small
+
+    - name: Show binary sizes
+      run: ls -l build/
